@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Rock Paper Scissors</title>
+
+    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+</head>
+
+<body>
+    <script>
+        function computerPlay()
+        {
+            // Randomly return rock, paper, or scissors.
+
+            // let randomNumber = Math.random() * 3; // 0, 1, 2 = rock, paper, scissors
+            // let computerRandom;
+
+            // if (randomNumber === 0)
+            // {
+            //     computerRandom = "rock";
+            // } else if (randomNumber === 1)
+            // {
+            //     computerRandom = "paper";
+            // } else if (randomNumber === 2)
+            // {
+            //     computerRandom = "scissors";
+            // }
+            switch (Math.floor(Math.random() * 3))
+            {
+                case 0:
+                    //console.log("math 0");
+                    return "rock";
+                case 1:
+                    //console.log("math 1");
+                    return "paper";
+                case 2:
+                    //console.log("math 2");
+                    return "scissors";
+            }
+            // return computerRandom;
+        }
+        function playRound(playerSelection, computerSelection)
+        {
+            // Plays a round of the game.
+            // needs to be case insenitive. rock, ROCK, Rock, etc.
+            // Return string with the winner. "You Lose! Paper beats Rock"
+            // possible outcomes...
+            //  You Win!
+            //  You Lose!
+            //  Rock beats Scissors
+            //  Paper beats Rock
+            //  Scissors beat Paper
+            //  Draw!
+
+            // if (playerSelection === computerSelection)
+            // {
+            //     result = "Draw";
+            // } else if ()
+            //console.log("playRound input is " + playerSelection + " " + computerSelection);
+            playerSelection = playerSelection.toLowerCase();
+
+            switch (playerSelection)
+            {
+                case "rock":
+                    switch (computerSelection)
+                    {
+                        case "rock":
+                            return "Draw! Rock & Rock";
+                        case "paper":
+                            return "You Lose! Paper beats Rock";
+                        case "scissors":
+                            return "You Win! Rock beats Scissors";
+                        default:
+                            console.log("Error, stopped in first case 'rock'");
+                    }
+                    break;
+                case "paper":
+                    switch (computerSelection)
+                    {
+                        case "rock":
+                            return "You Win! Paper beats Rock";
+                        case "paper":
+                            return "Draw! Paper & Paper";
+                        case "scissors":
+                            return "You Lose! Scissors beats Paper";
+                        default:
+                            console.log("Error, stopped in second case 'paper'");
+                    }
+                    break;
+                case "scissors":
+                    switch (computerSelection)
+                    {
+                        case "rock":
+                            return "You Lose! Rock beats Scissors";
+                        case "paper":
+                            return "You Win! Scissors beats Paper";
+                        case "scissors":
+                            return "Draw! Scissors & Scissors";
+                        default:
+                            console.log("Error, stopped in third case 'scissors'");
+                    }
+                    break;
+                default:
+                    console.log("Error, no case match in playRound");
+            }
+        }
+        // test function
+        // const playerSelection = "rock";
+        // const computerSelection = computerPlay();
+        // console.log(playRound(playerSelection, computerSelection));
+
+        function game()
+        {
+            // call playRound(). play 5 times.
+            // Keep score and report winner or loser.
+            // console.log() each round, then overall winner.
+            // prompt() for user input.
+            // syntax: result = window.prompt(message, default);
+            let result;
+            let totalWins = 0;
+
+            for (let i = 1; i <= 5; i++)
+            {
+                playerSelection = window.prompt("What is your selection: Rock, Paper or Scissors?", "rock");
+                result = playRound(playerSelection, computerPlay());
+                console.log("Round " + i);
+                console.log(result);
+                if (result.includes("Win!"))
+                {
+                    totalWins++;
+                }
+            }
+            if (totalWins >= 3)
+            {
+                console.log("You're the winner! You won " + totalWins + " out of 5 rounds!");
+            } else
+            {
+                console.log("You lost... with " + totalWins + " out of 5 rounds.")
+            }
+        }
+    </script>
+</body>
+
+</html>
