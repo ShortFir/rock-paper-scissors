@@ -16,32 +16,15 @@
         {
             // Randomly return rock, paper, or scissors.
 
-            // let randomNumber = Math.random() * 3; // 0, 1, 2 = rock, paper, scissors
-            // let computerRandom;
-
-            // if (randomNumber === 0)
-            // {
-            //     computerRandom = "rock";
-            // } else if (randomNumber === 1)
-            // {
-            //     computerRandom = "paper";
-            // } else if (randomNumber === 2)
-            // {
-            //     computerRandom = "scissors";
-            // }
             switch (Math.floor(Math.random() * 3))
             {
                 case 0:
-                    //console.log("math 0");
                     return "rock";
                 case 1:
-                    //console.log("math 1");
                     return "paper";
                 case 2:
-                    //console.log("math 2");
                     return "scissors";
             }
-            // return computerRandom;
         }
         function playRound(playerSelection, computerSelection)
         {
@@ -56,11 +39,8 @@
             //  Scissors beat Paper
             //  Draw!
 
-            // if (playerSelection === computerSelection)
-            // {
-            //     result = "Draw";
-            // } else if ()
             //console.log("playRound input is " + playerSelection + " " + computerSelection);
+            
             playerSelection = playerSelection.toLowerCase();
 
             switch (playerSelection)
