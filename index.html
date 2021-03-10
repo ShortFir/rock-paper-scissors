@@ -6,16 +6,59 @@
     <meta charset="UTF-8">
 
     <title>Rock Paper Scissors</title>
-
-    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
 </head>
 
+<style>
+    #playArea
+    {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #buttonBox
+    {
+        height: 110px;
+        width: 310px;
+    }
+    .playerButton
+    {
+        height: 100px;
+        width: 100px;
+    }
+    #resultBox
+    {
+        display: flex;
+        flex-flow: column;
+        border: solid;
+        border-width: 1px;
+        height: 100px;
+        width: 310px;
+    }
+</style>
+
 <body>
-    <script>
+    <div id="playArea">
+        <div id="buttonBox">
+            <button class="playerButton" id="rock">ROCK</button>
+            <button class="playerButton" id="paper">PAPER</button>
+            <button class="playerButton" id="scissors">SCISSORS</button>
+        </div>
+        <div id="resultBox">
+            <div id="roundResult">
+
+            </div>
+            <div id="ongoingResults">
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
         function computerPlay()
         {
-            // Randomly return rock, paper, or scissors.
-
             switch (Math.floor(Math.random() * 3))
             {
                 case 0:
@@ -93,35 +136,47 @@
         // const computerSelection = computerPlay();
         // console.log(playRound(playerSelection, computerSelection));
 
-        function game()
+        function game(playerInput)
         {
             // call playRound(). play 5 times.
             // Keep score and report winner or loser.
             // console.log() each round, then overall winner.
             // prompt() for user input.
             // syntax: result = window.prompt(message, default);
-            let result;
-            let totalWins = 0;
+            
+            // let result;
+            // let totalWins = 0;
 
-            for (let i = 1; i <= 5; i++)
-            {
-                playerSelection = window.prompt("What is your selection: Rock, Paper or Scissors?", "rock");
-                result = playRound(playerSelection, computerPlay());
-                console.log("Round " + i);
-                console.log(result);
-                if (result.includes("Win!"))
-                {
-                    totalWins++;
-                }
-            }
-            if (totalWins >= 3)
-            {
-                console.log("You're the winner! You won " + totalWins + " out of 5 rounds!");
-            } else
-            {
-                console.log("You lost... with " + totalWins + " out of 5 rounds.")
-            }
+            // for (let i = 1; i <= 5; i++)
+            // {
+            //     playerSelection = window.prompt("What is your selection: Rock, Paper or Scissors?", "rock");
+            //     result = playRound(playerSelection, computerPlay());
+            //     console.log("Round " + i);
+            //     console.log(result);
+            //     if (result.includes("Win!"))
+            //     {
+            //         totalWins++;
+            //     }
+            // }
+            // if (totalWins >= 3)
+            // {
+            //     console.log("You're the winner! You won " + totalWins + " out of 5 rounds!");
+            // } else
+            // {
+            //     console.log("You lost... with " + totalWins + " out of 5 rounds.")
+            // }
+            console.log(playRound(playerInput, computerPlay()));
         }
+
+        const buttonClick = Array.from(document.querySelectorAll("button"));
+
+        buttonClick.forEach((button) =>
+        {
+            button.addEventListener("click", () =>
+            {
+                game(button.id);
+            })
+        });
     </script>
 </body>
 
