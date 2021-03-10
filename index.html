@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="UTF-8">
-
     <title>Rock Paper Scissors</title>
+    <link rel="icon" type="ico" href="rock_paper_scissors_favicon.ico">
 </head>
 
 <style>
@@ -32,10 +32,16 @@
     {
         display: flex;
         flex-flow: column;
+        justify-content: center;
+        align-items: center;
         border: solid;
         border-width: 1px;
         height: 100px;
         width: 310px;
+    }
+    .resultBox
+    {
+        height: 33px;
     }
 </style>
 
@@ -47,12 +53,9 @@
             <button class="playerButton" id="scissors">SCISSORS</button>
         </div>
         <div id="resultBox">
-            <div id="roundResult">
-
-            </div>
-            <div id="ongoingResults">
-
-            </div>
+            <div class="resultBox" id="roundResult"></div>
+            <div class="resultBox" id="ongoingResults">First to five</div>
+            <div class="resultBox" id="winnerResult"></div>
         </div>
     </div>
 
@@ -94,8 +97,10 @@
                         case "rock":
                             return "Draw! Rock & Rock";
                         case "paper":
+                            computerWins += 1;
                             return "You Lose! Paper beats Rock";
                         case "scissors":
+                            playerWins += 1;
                             return "You Win! Rock beats Scissors";
                         default:
                             console.log("Error, stopped in first case 'rock'");
@@ -105,10 +110,12 @@
                     switch (computerSelection)
                     {
                         case "rock":
+                            playerWins += 1;
                             return "You Win! Paper beats Rock";
                         case "paper":
                             return "Draw! Paper & Paper";
                         case "scissors":
+                            computerWins += 1;
                             return "You Lose! Scissors beats Paper";
                         default:
                             console.log("Error, stopped in second case 'paper'");
@@ -118,8 +125,10 @@
                     switch (computerSelection)
                     {
                         case "rock":
+                            computerWins += 1;
                             return "You Lose! Rock beats Scissors";
                         case "paper":
+                            playerWins += 1;
                             return "You Win! Scissors beats Paper";
                         case "scissors":
                             return "Draw! Scissors & Scissors";
@@ -136,8 +145,8 @@
         // const computerSelection = computerPlay();
         // console.log(playRound(playerSelection, computerSelection));
 
-        function game(playerInput)
-        {
+        // function game(playerInput)
+        // {
             // call playRound(). play 5 times.
             // Keep score and report winner or loser.
             // console.log() each round, then overall winner.
@@ -165,16 +174,29 @@
             // {
             //     console.log("You lost... with " + totalWins + " out of 5 rounds.")
             // }
-            console.log(playRound(playerInput, computerPlay()));
-        }
 
+            //outputResult.textContent = (playRound(playerInput, computerPlay()));
+        // }
+        const outputResult = document.getElementById("roundResult");
+        const outputTotal = document.getElementById("ongoingResults");
+        const outputWinner = document.getElementById("winnerResult");
         const buttonClick = Array.from(document.querySelectorAll("button"));
+
+        let playerWins = 0, computerWins = 0;
 
         buttonClick.forEach((button) =>
         {
             button.addEventListener("click", () =>
             {
-                game(button.id);
+                outputResult.textContent = (playRound(button.id, computerPlay()));
+                outputTotal.textContent = "Player: " + playerWins + "  Computer: " + computerWins;
+                if (playerWins === 5)
+                {
+                    outputWinner.textContent = "Player Wins!"
+                }else if (computerWins === 5)
+                {
+                    outputWinner.textContent = "Computer Wins!"
+                }
             })
         });
     </script>
