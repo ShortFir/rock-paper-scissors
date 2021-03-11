@@ -3,47 +3,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8">
     <link rel="icon" type="ico" href="rock_paper_scissors_favicon.ico">
+    
+    <style>
+        #playArea
+        {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #buttonBox
+        {
+            height: 110px;
+            width: 310px;
+        }
+        .playerButton
+        {
+            height: 100px;
+            width: 100px;
+        }
+        #resultBox
+        {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            border: solid;
+            border-width: 1px;
+            height: 100px;
+            width: 310px;
+        }
+        .resultBox
+        {
+            height: 33px;
+        }
+    </style>
 </head>
-
-<style>
-    #playArea
-    {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
-    }
-    #buttonBox
-    {
-        height: 110px;
-        width: 310px;
-    }
-    .playerButton
-    {
-        height: 100px;
-        width: 100px;
-    }
-    #resultBox
-    {
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center;
-        border: solid;
-        border-width: 1px;
-        height: 100px;
-        width: 310px;
-    }
-    .resultBox
-    {
-        height: 33px;
-    }
-</style>
 
 <body>
     <div id="playArea">
@@ -140,19 +140,9 @@
                     console.log("Error, no case match in playRound");
             }
         }
-        // test function
-        // const playerSelection = "rock";
-        // const computerSelection = computerPlay();
-        // console.log(playRound(playerSelection, computerSelection));
 
         // function game(playerInput)
         // {
-            // call playRound(). play 5 times.
-            // Keep score and report winner or loser.
-            // console.log() each round, then overall winner.
-            // prompt() for user input.
-            // syntax: result = window.prompt(message, default);
-            
             // let result;
             // let totalWins = 0;
 
@@ -174,8 +164,6 @@
             // {
             //     console.log("You lost... with " + totalWins + " out of 5 rounds.")
             // }
-
-            //outputResult.textContent = (playRound(playerInput, computerPlay()));
         // }
         const outputResult = document.getElementById("roundResult");
         const outputTotal = document.getElementById("ongoingResults");
